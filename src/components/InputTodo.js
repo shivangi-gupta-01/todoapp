@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {async} from '@firebase/util';
+import {addDoc, collection} from 'firebase/firestore'
+import {db} from '../firebaseConfig'
 
-const Inputtodo = () => {
+const InputTodo = () => {
+  const [title, setTitle] =useState("")
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+    if(title!=""){
+      await addDoc(collection(db, "todo"),{
+        title,
+        coompleted: false
+
+      })
+      setTitle("")
+    }
+
+  }
   return (
-    <div>Inputtodo</div>
+    <form onSubmit={handleSubmit}>
+      <input type={'text'} placeholder='Enter Todo task' value={'title'}
+      onChange={(e)=>setTitle(e.target.value)}/>
+      <button>+</button>
+    </form>
   )
 }
 
-export default Inputtodo
+export default InputTodo

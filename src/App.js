@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import InputTodo from './components/InputTodo';
+
+
 
 function App() {
   return (
@@ -7,6 +10,7 @@ function App() {
       <div className='title'>
         <h1>My todo List</h1>
       </div>
+      <InputTodo/>
     </div>
   );
 }
