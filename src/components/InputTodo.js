@@ -10,7 +10,7 @@ const InputTodo = () => {
     if(title!=""){
       await addDoc(collection(db, "todo"),{
         title,
-        coompleted: false
+        completed: false
 
       })
       setTitle("")
@@ -18,10 +18,10 @@ const InputTodo = () => {
 
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <input type={'text'} placeholder='Enter Todo task' value={'title'}
+    <form onSubmit={handleSubmit} className='flex justify-center items-center gap-10'>
+      <input className='border-solid border-2 border-orange-900 m-4 p-2 text-center text-amber-900 rounded' type={'text'} placeholder='Enter Todo task' value={title}
       onChange={(e)=>setTitle(e.target.value)}/>
-      <button>+</button>
+      <button className=' text-2xl p-2 text-white bg-amber-900 text-center rounded'> Add Task</button>
     </form>
   )
 }
